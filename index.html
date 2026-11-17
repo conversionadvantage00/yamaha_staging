@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Knysna Yamaha | Boats, Outboards & Marine Service</title>
 <meta name="description" content="Explore new and pre-owned boats, Yamaha outboards, marine service and leading boat brands at Knysna Yamaha.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","three/addons/":"./vendor/three/jsm/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script>
 try{document.documentElement.dataset.theme=localStorage.getItem('ky-theme')|| (matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(e){document.documentElement.dataset.theme='dark'}
 </script>
@@ -355,26 +356,27 @@ html[data-theme="light"]{--fm-bg:#fbfbfd;--fm-fg:#1d1d1f;--fm-mute:#6e6e73;--fm-
 </style>
 <style id="configurator-styles">
 .cfg{--cfg-accent:#79b9e8;position:relative;background:#1a1a1a;color:#f5f5f3;padding:clamp(54px,5.2vw,84px) 0 calc(clamp(54px,5.2vw,84px) + 40px)!important;overflow:hidden}
-.cfg-head{width:min(1280px,calc(100% - 72px));margin:0 auto 34px;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.cfg-head{width:min(1280px,calc(100% - 72px));margin:0 auto 34px;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:26px;align-items:end}
 .cfg-head h2{margin:0;font-size:clamp(2.6rem,6vw,5.6rem);line-height:.92;letter-spacing:-.055em;font-weight:800}
-.cfg-head p{margin:0;max-width:430px;color:#b9b9b4;line-height:1.65}
+.cfg-head p{margin:0;padding-bottom:.35em;color:#b9b9b4;line-height:1.65}
 .cfg-main{width:min(1280px,calc(100% - 72px));margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:26px;align-items:stretch}
 .cfg-stage{position:relative;isolation:isolate;border-radius:8px;overflow:hidden;min-height:480px;display:grid;place-items:center;padding:56px 3% 64px;background:linear-gradient(150deg,#262626,#0c0c0c 70%)}
 .cfg-stage:before{content:"";position:absolute;z-index:-2;width:80%;aspect-ratio:1;left:10%;top:6%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--cfg-accent) 20%,transparent),transparent 66%);filter:blur(24px);transition:background .6s ease}
 .cfg-stage:after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.1),transparent 30%,rgba(0,0,0,.55))}
 .cfg-art{position:relative;width:100%;aspect-ratio:1937/812;filter:drop-shadow(0 34px 28px rgba(0,0,0,.55));pointer-events:none}
-.cfg-art img,.cfg-art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.cfg-art img{opacity:0;transition:opacity .72s cubic-bezier(.22,1,.36,1)}.cfg-art img.on{opacity:1}
+.cfg-art img,.cfg-art canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cfg-art canvas{opacity:0;transition:opacity .55s cubic-bezier(.22,1,.36,1)}.cfg-art canvas.on{opacity:1}
+.cfg-art.cfg-live .cfg-fallback{visibility:hidden}
 .cfg-cap{position:absolute;left:22px;bottom:18px;right:22px;display:flex;align-items:center;gap:12px;font:800 1.05rem 'Gilroy','Manrope',sans-serif;letter-spacing:-.02em}
-.cfg-cap i{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.85);background:var(--c);flex:none}.cfg-cap i+i{margin-left:-20px}.cfg-cap span{margin-left:6px}
+.cfg-cap i{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.85);background:var(--c);flex:none}.cfg-cap i+i{margin-left:-20px}.cfg-cap i:nth-child(2){z-index:1}.cfg-cap i:first-child{z-index:2}.cfg-cap span{margin-left:6px}
 .cfg-panel{background:#222;border:1px solid #333;border-radius:8px;padding:24px 22px 22px;display:flex;flex-direction:column}
-.cfg-group{padding:0 0 22px;margin:0 0 22px;border-bottom:1px solid #333}
+.cfg-group{padding:0 0 20px;margin:0 0 20px;border-bottom:1px solid #333}
 .cfg-label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 16px;font-weight:800;font-size:1.05rem}
 .cfg-label span{font-weight:500;color:#b9b9b4;font-size:.9rem;text-align:right}
-.cfg-sw{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.cfg-sw{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
 .cfg-sw button{aspect-ratio:1;width:100%;max-width:52px;border-radius:50%;border:1px solid #4a4a4a;padding:4px;background:transparent;cursor:pointer;transition:transform .25s,border-color .2s,box-shadow .25s}
 .cfg-sw button:hover{transform:translateY(-2px);border-color:#888}
-.cfg-sw button span{display:block;width:100%;height:100%;border-radius:50%;background:linear-gradient(145deg,var(--h) 0 62%,var(--a) 63% 72%,#181818 73%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.cfg-sw button span{display:block;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.32),transparent 55%),var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),inset 0 -6px 10px rgba(0,0,0,.22)}
 .cfg-sw button[aria-pressed=true]{border-color:#fff;box-shadow:0 0 0 2px #222,0 0 0 4px #fa2805}
 .cfg-rows{display:grid;gap:1px;background:#333;border:1px solid #333;border-radius:6px;overflow:hidden;margin-bottom:8px}
 .cfg-rows div{display:flex;justify-content:space-between;gap:16px;padding:12px 14px;background:#262626;font-size:.88rem}.cfg-rows dt{color:#a3a39e}.cfg-rows dd{margin:0;font-weight:700;text-align:right}
@@ -383,19 +385,139 @@ html[data-theme="light"]{--fm-bg:#fbfbfd;--fm-fg:#1d1d1f;--fm-mute:#6e6e73;--fm-
 .cfg-actions .btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff;background:transparent}
 .cfg-actions .btn-ghost:hover{border-color:#fff}
 .cfg-fine{margin:16px 0 0;color:#8e8e89;font-size:.8rem;line-height:1.55}
-@media(max-width:980px){.cfg-main{grid-template-columns:1fr}.cfg-head,.cfg-main{width:calc(100% - 40px)}.cfg-stage{min-height:0}}
+@media(max-width:980px){.cfg-main,.cfg-head{grid-template-columns:1fr}.cfg-head{gap:18px}.cfg-head p{max-width:520px;padding:0}.cfg-head,.cfg-main{width:calc(100% - 40px)}.cfg-stage{min-height:0}}
 @media(max-width:620px){.cfg{padding:36px 0 76px!important}.cfg-stage{padding:40px 2% 60px}.cfg-cap{left:14px;bottom:14px;font-size:.95rem}.cfg-art{width:104%;margin-left:-2%}}
-@media(prefers-reduced-motion:reduce){.cfg-art img,.cfg-stage:before{transition:none}}
+@media(prefers-reduced-motion:reduce){.cfg-art canvas,.cfg-stage:before{transition:none}}
 </style>
 <script>
 window.kyAsset=(source)=>source;
 </script>
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23242424%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2222%22%20fill%3D%22none%22%20stroke%3D%22%23fa2805%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M18%2027c8%201%2010%209%2014%2017%204-8%206-16%2014-17-4%2011-8%2019-14%2025-6-6-10-14-14-25Z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E">
+<style id="uniform-v1">
+:root{
+  --sec-pad:clamp(56px,5.2vw,84px);   /* top and bottom of every section */
+  --head-top:clamp(40px,4.4vw,64px);  /* room above a heading (holds the script word) */
+  --head-gap:clamp(44px,4.6vw,72px);  /* heading block to the content below it */
+}
+@media(max-width:620px){:root{--sec-pad:44px;--head-top:34px;--head-gap:34px}}
+
+/* every content section: same padding */
+.section,.brand-section,.cfg{padding:var(--sec-pad) 0!important}
+
+/* every heading block: same room above and same gap to the content */
+.wrap>.section-head,.wrap>.brand-title,.contact .section-head{padding-top:var(--head-top)!important;margin-bottom:var(--head-gap)!important}
+.cfg>.cfg-head{padding-top:var(--head-top);margin-bottom:var(--head-gap)}
+
+/* no divider lines between sections */
+.brand-section,html[data-theme="light"] .brand-section{border-bottom:0!important}
+.brand-jump,html[data-theme="light"] .brand-jump{border-bottom:0!important}
+.yamaha-depth{border-block:0!important}
+.intro{border-top:0!important;border-bottom:0!important}
+</style>
+<style id="text-motion-v1">
+/* boat brand titles: no "Our"; orange underline sweeps in under the name (option C), subheading soft grey */
+.brand-title h3::before{content:none!important;display:none!important}
+html .brand-title p{color:#b7b7b7!important}
+html[data-theme="light"] .brand-title p{color:#5f5f5a!important}
+.brand-title h3{position:relative!important}
+.brand-title h3::after{content:"";position:absolute;left:.08em;right:.08em;bottom:.04em;height:.06em;min-height:4px;
+  background:#fa2805;border-radius:2px;transform:scaleX(0);transform-origin:left center;
+  transition:transform 1s cubic-bezier(.65,0,.35,1) .6s}
+.brand-title h3.tm-in::after{transform:none}
+
+/* split headings: the heading itself stays put, its letters come into focus one by one */
+.tm-split{opacity:1!important;transform:none!important;transition:none!important}
+.tm-w{display:inline-block;white-space:nowrap}
+.tm-c{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(.18em);
+  transition:opacity .8s ease,filter .9s ease,transform 1s cubic-bezier(.22,1,.36,1)}
+.tm-split.tm-in .tm-c{opacity:1;filter:none;transform:none}
+
+/* script word (Our, New, Pre-Owned, Come) also comes into focus */
+.section-head h2::before{filter:blur(8px);transition:opacity .9s ease .45s,transform 1.25s cubic-bezier(.22,1,.36,1) .35s,filter 1s ease .45s!important}
+.section-head.in h2::before{filter:none}
+
+/* the builder intro rises in after its heading */
+.cfg-head p{opacity:0;transform:translateY(16px);transition:opacity .7s ease .55s,transform .9s cubic-bezier(.22,1,.36,1) .55s}
+.cfg-head.in p{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  .tm-c{opacity:1!important;filter:none!important;transform:none!important;transition:none!important}
+  .section-head h2::before{filter:none!important}
+  .cfg-head p{opacity:1!important;transform:none!important}
+  .brand-title h3::after{transform:none!important;transition:none!important}
+}
+</style>
+<style id="poppins-v1">
+body,body *:not(#_){font-family:'Poppins',Arial,sans-serif!important}
+</style>
+<style id="logo-v1">
+.brandmark-logo{display:inline-flex;align-items:center;line-height:0}
+.brandmark-logo img{display:block;height:48px;width:auto;max-width:none}
+@media(max-width:620px){.brandmark-logo img{height:40px}}
+</style>
+<style id="engine-copy-v1">
+.engine-copy h2 .eh-line{display:block}
+.engine-copy h2 .tm-w{will-change:transform;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.engine-copy h2 .tm-w[data-i="0"]{transform:translateX(calc(var(--ex,0) * 0px))}
+.engine-copy h2 .tm-w[data-i="1"]{transform:translateX(calc(var(--ex,0) * 30px))}
+.engine-copy h2 .tm-w[data-i="2"]{transform:translateX(calc(var(--ex,0) * 12px))}
+@media(max-width:620px){.engine-copy h2 .tm-w{transform:none!important}}
+
+.engine-copy p .ew{display:inline-block;opacity:0;transform:translateY(.7em);filter:blur(4px);
+  transition:opacity .6s ease,transform .8s cubic-bezier(.22,1,.36,1),filter .6s ease}
+.engine-copy.ec-in p .ew{opacity:1;transform:none;filter:none}
+
+.engine-spec:before{transform:scaleX(0);transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.engine-spec-1:before,.engine-spec-3:before{transform-origin:left center}
+.engine-spec-2:before{transform-origin:right center}
+.engine-spec b{clip-path:inset(-20% 100% -20% 0);transition:clip-path .7s cubic-bezier(.65,0,.35,1) .25s}
+.engine-spec-2 b{clip-path:inset(-20% 0 -20% 100%)}
+.engine-spec small{opacity:0;transform:translateY(6px);transition:opacity .5s ease .55s,transform .7s cubic-bezier(.22,1,.36,1) .55s}
+.engine-spec.on:before{transform:none}
+.engine-spec.on b{clip-path:inset(-20% -2% -20% -2%)}
+.engine-spec.on small{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  .engine-copy h2 .tm-w{transform:none!important}
+  .engine-copy p .ew{opacity:1!important;transform:none!important;filter:none!important}
+  .engine-spec:before,.engine-spec b,.engine-spec small{transform:none!important;clip-path:none!important;opacity:1!important}
+}
+</style>
+<style id="contact-form-v1">
+/* map and form line up */
+@media(min-width:901px){
+  .contact-grid{align-items:stretch!important}
+  .contact .marine-console{display:flex;flex-direction:column}
+  .contact .console-bezel{flex:1;display:flex;flex-direction:column}
+  .contact .chart-screen{flex:1 1 auto;height:auto!important;min-height:430px}
+  .contact .contact-form-panel{padding-top:0!important;display:flex;flex-direction:column}
+  .contact .contact-form-panel h3{margin-top:-.12em!important}
+  .contact .contact-form-panel .form{flex:1;display:flex;flex-direction:column}
+  .contact .contact-form-panel .submit-row{margin-top:auto}
+}
+
+/* field you are filling in: soft red glow, label lights up */
+.contact .form label{transition:color .3s ease}
+.contact .form input,.contact .form textarea{transition:border-color .3s ease,box-shadow .45s ease,background-color .3s ease!important}
+.contact .form input:focus,.contact .form textarea:focus,
+html[data-theme="light"] .contact .form input:focus,html[data-theme="light"] .contact .form textarea:focus{
+  outline:0!important;border-color:rgba(250,40,5,.75)!important;
+  box-shadow:0 0 0 3px rgba(250,40,5,.14),0 0 22px rgba(250,40,5,.22)!important}
+.contact .form div:focus-within>label{color:#fa2805!important}
+
+/* form rises in, one piece after another */
+.contact .cf-step{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.contact .cf-on .cf-step{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  .contact .cf-step{opacity:1!important;transform:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
 <nav class="nav" id="nav">
-  <a class="brandmark" href="#top">KNYSNA YAMAHA<small>Marine • Knysna</small></a>
+  <a class="brandmark brandmark-logo" href="#top" aria-label="Knysna Yamaha, back to top"><img src="assets/images/knysna-yamaha-logo.png" width="200" height="74" alt="Knysna Yamaha"></a>
   <div class="navlinks">
     <a href="#new">New Boats</a><a href="#preowned">Pre-Owned</a><a href="#configure">Build Yours</a><a href="#brands">Brands</a><a href="#service">Service</a><a href="#contact" class="nav-cta">Enquire</a>
   </div>
@@ -462,19 +584,22 @@ window.kyAsset=(source)=>source;
 <section class="cfg" id="configure" aria-label="Odyssey CX 580 configurator">
   <div class="cfg-head reveal">
     <h2>Build your<br>Odyssey CX 580</h2>
-    <p>Pick a factory colourway to see the finished boat, then send your build to our Knysna team for a quote.</p>
+    <p>Choose your hull, stripe and roof colours to see your boat come together, then send your build to our Knysna team for a quote.</p>
   </div>
   <div class="cfg-main reveal">
     <div class="cfg-stage" id="cfgStage">
-      <div class="cfg-art" role="img" aria-label="Odyssey CX 580 in the selected colourway">
-        <img class="on" id="cfgImgA" src="assets/images/configurator/cx580-arctic-lagoon.png" alt="" width="1937" height="812">
-        <img id="cfgImgB" src="assets/images/configurator/cx580-arctic-lagoon.png" alt="" width="1937" height="812" loading="lazy">
+      <div class="cfg-art" role="img" id="cfgArt" aria-label="Odyssey CX 580 in the selected colours">
+        <img class="cfg-fallback" src="assets/images/configurator/cx580-base.webp" alt="" width="1937" height="812">
+        <canvas id="cfgCanA" width="1937" height="812"></canvas>
+        <canvas id="cfgCanB" width="1937" height="812"></canvas>
       </div>
-      <div class="cfg-cap"><i id="cfgChipH"></i><i id="cfgChipA"></i><span id="cfgCapName"></span></div>
+      <div class="cfg-cap"><i id="cfgChipH"></i><i id="cfgChipS"></i><i id="cfgChipR"></i><span id="cfgCapName"></span></div>
     </div>
-    <aside class="cfg-panel" aria-label="Choose your colourway">
-      <div class="cfg-group"><div class="cfg-label">Colourway <span id="cfgName"></span></div><div class="cfg-sw" id="cfgSw"></div></div>
-      <dl class="cfg-rows"><div><dt>Hull</dt><dd id="cfgHullName"></dd></div><div><dt>Pinstripe</dt><dd id="cfgStripeName"></dd></div><div><dt>Build code</dt><dd id="cfgCode"></dd></div></dl>
+    <aside class="cfg-panel" aria-label="Choose your colours">
+      <div class="cfg-group"><div class="cfg-label">Hull <span id="cfgHullLabel"></span></div><div class="cfg-sw cfg-sw-6" id="cfgSwHull" role="group" aria-label="Hull colour"></div></div>
+      <div class="cfg-group"><div class="cfg-label">Stripe <span id="cfgStripeLabel"></span></div><div class="cfg-sw cfg-sw-4" id="cfgSwStripe" role="group" aria-label="Stripe colour"></div></div>
+      <div class="cfg-group"><div class="cfg-label">Roof <span id="cfgRoofLabel"></span></div><div class="cfg-sw cfg-sw-2" id="cfgSwRoof" role="group" aria-label="Roof colour"></div></div>
+      <dl class="cfg-rows"><div><dt>Build code</dt><dd id="cfgCode"></dd></div></dl>
       <div class="cfg-actions">
         <a class="btn btn-primary" id="cfgWhatsapp" href="#" target="_blank" rel="noopener">Request a quote on WhatsApp</a>
         <button class="btn btn-ghost" id="cfgReset" type="button">Start over</button>
@@ -528,7 +653,7 @@ window.kyAsset=(source)=>source;
           <div><label>Boat / model</label><input name="product" placeholder="e.g. Odyssey 650"></div>
           <div><label>Message</label><textarea name="message" placeholder="What would you like to know?"></textarea></div>
           <p class="form-note">This standalone prototype opens your email client with the enquiry pre-filled. Replace this fallback with the live microsite form endpoint when available.</p>
-          <div class="submit-row"><button class="btn btn-dark" type="submit">Send enquiry</button><a class="btn btn-outline" href="mailto:sean@knysnayamaha.co.za">Email Sean</a></div>
+          <div class="submit-row"><button class="btn btn-dark" type="submit">Send Enquiry</button><a class="btn btn-outline" href="mailto:sean@knysnayamaha.co.za">Email Sean</a></div>
         </form>
       </div>
     </div>
@@ -538,7 +663,7 @@ window.kyAsset=(source)=>source;
 <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="modal-grid"><div class="modal-media"><div class="modal-main"><img id="modalImage" alt=""></div><div class="thumbs" id="modalThumbs"></div></div><div class="modal-copy"><h3 id="modalTitle"></h3><p class="modal-desc" id="modalDesc"></p><div class="specs" id="modalSpecs"></div><div class="modal-actions"><button class="btn btn-dark" id="modalEnquire">Enquire about this boat</button><a class="btn btn-outline" id="modalWhatsApp" target="_blank" rel="noopener">WhatsApp</a></div></div></div></div></div>
 <div class="enq-backdrop" id="enqBackdrop" aria-hidden="true"><aside class="enq" role="dialog" aria-modal="true" aria-labelledby="enqTitle"><span class="enq-grab" aria-hidden="true"></span><button class="enq-close" id="enqClose" type="button" aria-label="Close form">&times;</button>
 <div id="enqHead"><h3 id="enqTitle"></h3><p class="enq-lead" id="enqLead"></p></div>
-<form class="enq-form" id="enqForm" hidden><input type="hidden" name="product"><div class="row"><label>First name<i>*</i><input name="name" autocomplete="given-name" required></label><label>Last name<i>*</i><input name="surname" autocomplete="family-name" required></label></div><label>Email<i>*</i><input type="email" name="email" autocomplete="email" required></label><label>Contact number<i>*</i><input type="tel" name="phone" autocomplete="tel" required></label><label>Message<textarea name="message" placeholder="What would you like to know?"></textarea></label><button class="btn btn-dark" type="submit">Send enquiry</button></form>
+<form class="enq-form" id="enqForm" hidden><input type="hidden" name="product"><div class="row"><label>First name<i>*</i><input name="name" autocomplete="given-name" required></label><label>Last name<i>*</i><input name="surname" autocomplete="family-name" required></label></div><label>Email<i>*</i><input type="email" name="email" autocomplete="email" required></label><label>Contact number<i>*</i><input type="tel" name="phone" autocomplete="tel" required></label><label>Message<textarea name="message" placeholder="What would you like to know?"></textarea></label><button class="btn btn-dark" type="submit">Send Enquiry</button></form>
 <form class="enq-form" id="bookForm" hidden><div class="row"><label>Name<i>*</i><input name="name" autocomplete="given-name" required></label><label>Surname<input name="surname" autocomplete="family-name"></label></div><label>Email address<i>*</i><input type="email" name="email" autocomplete="email" required></label><label>Contact number<i>*</i><input type="tel" name="phone" autocomplete="tel" required></label><label>Province<input name="province" autocomplete="address-level1"></label><label>Which service are you interested in?<select name="service"><option value="">Choose a service</option><option>Major Service</option><option>Minor Service</option><option>Installation</option><option>Motor Repair</option></select></label><label>Where did you hear about us?<i>*</i><select name="source" required><option value="">Please choose</option><option>Google</option><option>Social Media</option><option>Other</option></select></label><label>Message<textarea name="message" placeholder="Please leave us a message"></textarea></label><button class="btn btn-dark" type="submit">Enquire now</button></form>
 <div class="enq-done" id="enqDone" hidden><h3>Thank you</h3><p class="enq-lead">Your email app should have opened with the enquiry ready to send. If it did not, call 044 382 5332 or WhatsApp 082 457 4026.</p><button class="btn btn-outline" id="enqDoneClose" type="button">Close</button></div></aside></div>
 <script>/**
@@ -772,40 +897,94 @@ addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenu()});
 
 <script id="configurator-script">
 (function(){
-var C=[
- {id:'arctic-lagoon',name:'Arctic White / Knysna Lagoon',hull:'Arctic White',stripe:'Knysna Lagoon',h:'#f4f4f0',a:'#79b9e8',code:'AW-KL'},
- {id:'arctic-yamaha',name:'Arctic White / Yamaha Red',hull:'Arctic White',stripe:'Yamaha Red',h:'#f4f4f0',a:'#df332b',code:'AW-YR'},
- {id:'mist-ocean',name:'Silver Mist / Deep Ocean',hull:'Silver Mist',stripe:'Deep Ocean',h:'#aeb3b8',a:'#173460',code:'SM-DO'},
- {id:'graphite-aqua',name:'Graphite / Coastal Aqua',hull:'Graphite',stripe:'Coastal Aqua',h:'#34373a',a:'#53b7ad',code:'GR-CA'},
- {id:'navy-sunset',name:'Deep Navy / Sunset Orange',hull:'Deep Navy',stripe:'Sunset Orange',h:'#102542',a:'#ef7622',code:'DN-SO'},
- {id:'black-yamaha',name:'Jet Black / Yamaha Red',hull:'Jet Black',stripe:'Yamaha Red',h:'#111111',a:'#df332b',code:'JB-YR'},
- {id:'black-lime',name:'Jet Black / Sport Lime',hull:'Jet Black',stripe:'Sport Lime',h:'#111111',a:'#a9d63e',code:'JB-SL'}
-];
-C.forEach(function(c){c.src='assets/images/configurator/cx580-'+c.id+'.png'});
-var sec=document.getElementById('configure'),sw=document.getElementById('cfgSw'),A=document.getElementById('cfgImgA'),B=document.getElementById('cfgImgB');if(!sec||!sw)return;
-var cur=C[0],on=A,off=B,token=0,warmed=false;
-function find(id){for(var i=0;i<C.length;i++)if(C[i].id===id)return C[i];return null}
-var m=/#configure=([a-z-]+)/.exec(location.hash);if(m&&find(m[1]))cur=find(m[1]);
-function warm(){if(warmed)return;warmed=true;C.forEach(function(c){var i=new Image();i.src=c.src})}
-C.forEach(function(c){var b=document.createElement('button');b.type='button';b.title=c.name;b.setAttribute('aria-label',c.name);b.dataset.id=c.id;b.innerHTML='<span style="--h:'+c.h+';--a:'+c.a+'"></span>';sw.append(b)});
-function text(id,v){document.getElementById(id).textContent=v}
-function show(c,instant){
- cur=c;sec.style.setProperty('--cfg-accent',c.a);
- [].forEach.call(sw.children,function(b){b.setAttribute('aria-pressed',b.dataset.id===c.id)});
- text('cfgName',c.name);text('cfgHullName',c.hull);text('cfgStripeName',c.stripe);text('cfgCode','CX580-'+c.code);text('cfgCapName',c.name);
- document.getElementById('cfgChipH').style.setProperty('--c',c.h);document.getElementById('cfgChipA').style.setProperty('--c',c.a);
- document.getElementById('cfgWhatsapp').href='https://wa.me/27824574026?text='+encodeURIComponent('Hi Knysna Yamaha, I would like a quote on an Odyssey CX 580. Colourway: '+c.name+' (CX580-'+c.code+'). (Built on your website)');
- try{history.replaceState(null,'','#configure='+c.id)}catch(e){}
- var t=new URL(c.src,document.baseURI).href;if(on.src===t)return;
- var k=++token,done=false;
- function go(){if(k!==token||done)return;done=true;off.classList.add('on');on.classList.remove('on');var s=on;on=off;off=s}
- off.onload=go;off.src=c.src;if(off.complete)requestAnimationFrame(go);
+// Colour options. Placeholders until the client confirms exact names and codes: change them here only.
+// Arctic White hull, Knysna Lagoon stripe and the photographed cover are the colours in the base photo.
+var OPT={
+ hull:[
+  {id:'aw',name:'Arctic White',c:'#f4f4f0',orig:true},
+  {id:'sm',name:'Silver Mist',c:'#a9aeb4'},
+  {id:'gr',name:'Graphite',c:'#3a3d41'},
+  {id:'ob',name:'Ocean Blue',c:'#1f5f99'},
+  {id:'dn',name:'Deep Navy',c:'#182f58'},
+  {id:'jb',name:'Jet Black',c:'#141414'}
+ ],
+ stripe:[
+  {id:'kl',name:'Knysna Lagoon',c:'#79b9e8',orig:true},
+  {id:'yr',name:'Yamaha Red',c:'#df332b'},
+  {id:'so',name:'Sunset Orange',c:'#ef7622'},
+  {id:'sl',name:'Sport Lime',c:'#a9d63e'}
+ ],
+ roof:[
+  {id:'tn',name:'Tan',c:'#b59b76'},
+  {id:'gy',name:'Grey',c:'#8f9396'}
+ ]
+};
+var sec=document.getElementById('configure');if(!sec)return;
+var art=document.getElementById('cfgArt'),A=document.getElementById('cfgCanA'),B=document.getElementById('cfgCanB');
+var SW={hull:document.getElementById('cfgSwHull'),stripe:document.getElementById('cfgSwStripe'),roof:document.getElementById('cfgSwRoof')};
+var LBL={hull:'cfgHullLabel',stripe:'cfgStripeLabel',roof:'cfgRoofLabel'};
+var sel={hull:OPT.hull[0],stripe:OPT.stripe[0],roof:OPT.roof[0]};
+function find(k,id){for(var i=0;i<OPT[k].length;i++)if(OPT[k][i].id===id)return OPT[k][i];return null}
+var m=/#configure=([a-z]+)\.([a-z]+)\.([a-z]+)/.exec(location.hash);
+if(m){var h=find('hull',m[1]),s=find('stripe',m[2]),r=find('roof',m[3]);if(h)sel.hull=h;if(s)sel.stripe=s;if(r)sel.roof=r}
+
+// swatches
+Object.keys(SW).forEach(function(k){OPT[k].forEach(function(o){
+ var b=document.createElement('button');b.type='button';b.title=o.name;b.setAttribute('aria-label',o.name);b.dataset.k=k;b.dataset.id=o.id;
+ b.innerHTML='<span style="--c:'+o.c+'"></span>';SW[k].append(b)})});
+sec.addEventListener('click',function(e){var b=e.target.closest('.cfg-sw button');if(!b)return;sel[b.dataset.k]=find(b.dataset.k,b.dataset.id);update()});
+document.getElementById('cfgReset').addEventListener('click',function(){sel={hull:OPT.hull[0],stripe:OPT.stripe[0],roof:OPT.roof[0]};update()});
+
+// recolour engine: base photo + mask image (R hull, G stripe, B roof cover)
+var W=1937,H=812,base=null,mask=null,idx={hull:null,stripe:null,roof:null},ready=false,on=A,off=B;
+function rgb(hex){var n=parseInt(hex.slice(1),16);return[n>>16&255,n>>8&255,n&255]}
+function load(src){return new Promise(function(res,rej){var i=new Image();i.onload=function(){res(i)};i.onerror=rej;i.src=src})}
+function pixels(img){var c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');x.drawImage(img,0,0,W,H);return x.getImageData(0,0,W,H)}
+function init(){
+ Promise.all([load('assets/images/configurator/cx580-base.webp'),load('assets/images/configurator/cx580-masks.png')]).then(function(I){
+  try{base=pixels(I[0]);mask=pixels(I[1]).data}catch(e){art.classList.add('cfg-static');return} // file opened from disk: browsers block pixel access
+  var d=base.data,lists={hull:[],stripe:[],roof:[]};
+  for(var p=0,i=0;p<W*H;p++,i+=4){if(mask[i]>3)lists.hull.push(p);if(mask[i+1]>3)lists.stripe.push(p);if(mask[i+2]>3)lists.roof.push(p)}
+  Object.keys(lists).forEach(function(k){idx[k]=Int32Array.from(lists[k])});
+  ready=true;render(true);
+ }).catch(function(){art.classList.add('cfg-static')});
 }
-sw.addEventListener('click',function(e){var b=e.target.closest('button');if(b)show(find(b.dataset.id))});
-document.getElementById('cfgReset').addEventListener('click',function(){show(C[0])});
-show(cur);
-if('IntersectionObserver' in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting){warm();o.disconnect()}},{rootMargin:'600px'}).observe(sec)}else warm();
-window.__cfg={show:show,C:C};
+// how each area keeps the photo's own light: ref = typical brightness of that area in the base photo
+var REF={hull:232,stripe:168,roof:42},CH={hull:0,stripe:1,roof:2};
+function paint(out,k,o){
+ if(o.orig)return;
+ var t=rgb(o.c),ref=REF[k],L,s,a,sp,d=base.data,list=idx[k],ch=CH[k],dark=(t[0]+t[1]+t[2])/3<90;
+ for(var n=0;n<list.length;n++){
+  var i=list[n]*4;a=mask[i+ch]/255;
+  L=d[i]*.3+d[i+1]*.59+d[i+2]*.11;s=L/ref;
+  if(k==='hull'){s=1+(s-1)*(dark?1.6:1.15);sp=Math.max(0,L-238)/17*(dark?.55:.3)}
+  else if(k==='roof'){s=Math.min(1.7,.35+s*.65);sp=0}
+  else{sp=0}
+  for(var c=0;c<3;c++){var v=t[c]*s;v+= (255-v)*sp;out[i+c]=out[i+c]*(1-a)+(v<0?0:v>255?255:v)*a}
+ }
+}
+function render(instant){
+ if(!ready)return;
+ var img=new ImageData(new Uint8ClampedArray(base.data),W,H);
+ paint(img.data,'hull',sel.hull);paint(img.data,'stripe',sel.stripe);paint(img.data,'roof',sel.roof);
+ off.getContext('2d').putImageData(img,0,0);
+ if(instant){off.style.transition='none';requestAnimationFrame(function(){off.style.transition=''})}
+ off.classList.add('on');on.classList.remove('on');var t=on;on=off;off=t;art.classList.add('cfg-live');
+}
+function text(id,v){document.getElementById(id).textContent=v}
+function update(first){
+ Object.keys(SW).forEach(function(k){[].forEach.call(SW[k].children,function(b){b.setAttribute('aria-pressed',b.dataset.id===sel[k].id)});text(LBL[k],sel[k].name)});
+ var name=sel.hull.name+' / '+sel.stripe.name+' / '+sel.roof.name,code='CX580-'+[sel.hull.id,sel.stripe.id,sel.roof.id].join('-').toUpperCase();
+ text('cfgCapName',name);text('cfgCode',code);art.setAttribute('aria-label','Odyssey CX 580 with a '+sel.hull.name+' hull, '+sel.stripe.name+' stripe and '+sel.roof.name+' roof');
+ document.getElementById('cfgChipH').style.setProperty('--c',sel.hull.c);document.getElementById('cfgChipS').style.setProperty('--c',sel.stripe.c);document.getElementById('cfgChipR').style.setProperty('--c',sel.roof.c);
+ sec.style.setProperty('--cfg-accent',sel.stripe.c);
+ document.getElementById('cfgWhatsapp').href='https://wa.me/27824574026?text='+encodeURIComponent('Hi Knysna Yamaha, I would like a quote on an Odyssey CX 580. Hull: '+sel.hull.name+'. Stripe: '+sel.stripe.name+'. Roof: '+sel.roof.name+'. Build code '+code+'. (Built on your website)');
+ if(!first){try{history.replaceState(null,'','#configure='+[sel.hull.id,sel.stripe.id,sel.roof.id].join('.'))}catch(e){}}
+ render(first);
+}
+update(true);
+if('IntersectionObserver' in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting){init();o.disconnect()}},{rootMargin:'600px'}).observe(sec)}else init();
+window.__cfg={sel:sel,OPT:OPT,update:update};
 })();
 </script>
 <script>
@@ -821,146 +1000,18 @@ var p=v.play();if(p&&p.catch)p.catch(function(){});
 document.addEventListener('touchstart',function(){if(v.paused)v.play().catch(function(){})},{once:true,passive:true});})();
 </script>
 <div id="stockSheetHost"></div>
-<script id="boat-cards">// Three boat card designs. Each exports css + a tile(b,i) that returns a <button class="tile v?" data-i>.
-// Uses the stock sheet's own vars: --card --fg --mute --line --chip --red
-(function(){
-const I={
- cal:'<svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
- bolt:'<svg viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></svg>',
- clock:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
- trailer:'<svg viewBox="0 0 24 24"><path d="M2 15h15V8H5v7M17 13h5"/><circle cx="8.5" cy="17.5" r="2"/><circle cx="13.5" cy="17.5" r="2"/></svg>',
- fuel:'<svg viewBox="0 0 24 24"><path d="M12 3.5s-6 6.6-6 10.6a6 6 0 0 0 12 0c0-4-6-10.6-6-10.6z"/></svg>',
- cam:'<svg viewBox="0 0 24 24"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg>',
- pin:'<svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>',
- arrow:'<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
- check:'<svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>'
-};
-const hp=b=>{const m=/(\d+)\s*hp/i.exec(b.engine);return m?m[1]+' hp':b.engine};
-const motor=b=>b.engine.replace(/^\d+\s*hp\s*/i,'');
-const hours=b=>b.hours?b.hours.replace(' hours',' hrs'):(b.badge==='New'?'0 hrs':'On request');
-const isNew=b=>b.badge==='New';
-const thumbs=b=>(b.images||[]).slice(1,4);
-
-/* ---------- A · LISTING (Autotrader-style) ---------- */
-const cssA=`
-.tile.va{display:flex;flex-direction:column;border-radius:14px;border:1px solid var(--line);box-shadow:none;background:var(--card)}
-.va .ph{aspect-ratio:4/3}
-.va .badge{border-radius:4px;padding:7px 10px;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:800;backdrop-filter:none;-webkit-backdrop-filter:none;border:0}
-.va .badge.new{background:var(--red)}.va .badge.used{background:#111;color:#fff}
-.va .count{position:absolute;right:12px;top:12px;display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:4px;background:rgba(0,0,0,.62);color:#fff;font-size:.74rem;font-weight:700}
-.va .count svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.8}
-.va .bd{padding:20px 22px 0;display:block}
-.va h3{margin:0!important;font-size:clamp(1.35rem,2vw,1.7rem)!important;letter-spacing:-.03em}
-.va .sub{display:block;margin-top:4px;color:var(--mute);font-size:.9rem}
-.va .pr{display:block;margin-top:14px}
-.va .pr b{font-size:clamp(1.5rem,2.3vw,2rem)!important;letter-spacing:-.035em;color:var(--fg)}
-.va .specs{display:flex;flex-wrap:wrap;margin:14px 0 0;padding:12px 0 0;border-top:1px solid var(--line);font-size:.88rem;color:var(--mute);background:none;border-radius:0;overflow:visible}
-.va .specs span{white-space:nowrap}
-.va .specs span+span:before{content:"";display:inline-block;width:1px;height:.85em;margin:0 11px;background:var(--line);vertical-align:-1px}
-.va .ft{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding:15px 22px 17px;border-top:1px solid var(--line)}
-.va .dl{display:flex;align-items:center;gap:7px;color:var(--mute);font-size:.82rem;font-weight:600}
-.va .dl svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8}
-.va .go{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:.88rem;color:var(--red)}
-.va .go svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2;transition:transform .4s var(--out)}
-@media(hover:hover) and (pointer:fine){.tile.va:hover{border-color:rgba(250,40,5,.6);box-shadow:0 22px 50px rgba(0,0,0,.3)}.tile.va:hover .go svg{transform:translateX(4px)}}
-.rail .tile.va{flex-basis:min(440px,86vw)}
-`;
-function tileA(b,i){return '<button class="tile va" type="button" data-i="'+i+'" style="--max:'+b.max+'px" aria-label="'+b.name+', '+b.price+'. Open details">'+
- '<span class="ph"><img src="'+b.src+'" alt="" loading="lazy" draggable="false"><span class="badge '+(isNew(b)?'new':'used')+'">'+b.badge+'</span>'+
- '<span class="count">'+I.cam+(b.images?b.images.length:1)+'</span></span>'+
- '<span class="bd"><h3>'+b.name+'</h3><span class="sub">'+b.engine+'</span>'+
- '<span class="pr"><b>'+b.price+'</b></span>'+
- '<span class="specs"><span>'+b.year+'</span>'+(b.hours||isNew(b)?'<span>'+hours(b)+'</span>':'')+'<span>'+b.fuel+'</span>'+(b.trailer?'<span>Trailer included</span>':'')+'</span></span>'+
- '<span class="ft"><span class="dl">'+I.pin+'Knysna Yamaha</span><span class="go">View boat'+I.arrow+'</span></span></button>'}
-
-/* ---------- B · SHOWROOM (dealership spec bar) ---------- */
-const cssB=`
-.tile.vb{border-radius:6px;background:var(--card);box-shadow:0 18px 50px rgba(0,0,0,.3)}
-.vb .ph{aspect-ratio:4/3}
-.vb .ph:before{content:"";position:absolute;inset:0 0 auto;height:30%;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0));z-index:1;pointer-events:none}
-.vb .badge{z-index:2;border-radius:2px;padding:7px 11px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
-.vb .badge.new{background:var(--red)}.vb .badge.used{background:#fff;color:#111}
-.vb .yr{position:absolute;z-index:2;top:14px;right:14px;color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.12em}
-.vb .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:22px 24px 20px;border-bottom:1px solid var(--line)}
-.vb .hd small{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red)}
-.vb .hd h3{margin:6px 0 0!important;font-size:clamp(1.6rem,2.6vw,2.3rem)!important;letter-spacing:-.045em;line-height:1}
-.vb .hd p{margin:7px 0 0!important;color:var(--mute)!important;font-size:.92rem!important}
-.vb .hd .pz{text-align:right;flex:none}
-.vb .hd .pz i{display:block;font-style:normal;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700}
-.vb .hd .pz b{display:block;margin-top:4px;font-size:clamp(1.4rem,2.3vw,1.9rem)!important;letter-spacing:-.04em;color:var(--fg)}
-.vb .bar{display:grid;grid-template-columns:repeat(3,1fr) auto;align-items:stretch}
-.vb .st{padding:15px 18px;border-right:1px solid var(--line);display:flex;align-items:center;gap:10px;min-width:0}
-.vb .st svg{flex:none;width:20px;height:20px;stroke:var(--mute);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.vb .st span{display:flex;flex-direction:column;gap:2px;min-width:0}
-.vb .st i{font-style:normal;font-size:.64rem;color:var(--mute);text-transform:uppercase;letter-spacing:.1em;font-weight:700}
-.vb .st em{font-style:normal;font-weight:800;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vb .cta{display:flex;align-items:center;gap:10px;padding:0 24px;background:var(--red);color:#fff;font-weight:800;font-size:.9rem;white-space:nowrap}
-.vb .cta svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;transition:transform .4s var(--out)}
-@media(hover:hover) and (pointer:fine){.tile.vb:hover .cta svg{transform:translateX(5px)}.tile.vb:hover .cta{background:#e62204}}
-@media(max-width:600px){.vb .hd{flex-direction:column;align-items:flex-start}.vb .hd .pz{text-align:left}.vb .bar{grid-template-columns:repeat(3,1fr)}.vb .cta{grid-column:1/-1;justify-content:center;padding:15px}.vb .st{padding:12px 10px;gap:0}.vb .st svg{display:none}.vb .st:nth-child(3){border-right:0}}
-`;
-function tileB(b,i){return '<button class="tile vb" type="button" data-i="'+i+'" style="--max:'+b.max+'px" aria-label="'+b.name+', '+b.price+'. Open details">'+
- '<span class="ph"><img src="'+b.src+'" alt="" loading="lazy" draggable="false"><span class="badge '+(isNew(b)?'new':'used')+'">'+b.badge+'</span><span class="yr">'+b.year+'</span></span>'+
- '<span class="hd"><span><small>'+(isNew(b)?'Available now':'Pre-owned')+'</small><h3>'+b.name+'</h3><p>'+b.engine+'</p></span>'+
- '<span class="pz"><i>Price</i><b>'+b.price+'</b></span></span>'+
- '<span class="bar"><span class="st">'+I.cal+'<span><i>Year</i><em>'+b.year+'</em></span></span><span class="st">'+I.bolt+'<span><i>Power</i><em>'+hp(b)+'</em></span></span>'+
- '<span class="st">'+(b.trailer?I.trailer+'<span><i>Trailer</i><em>Included</em></span>':I.clock+'<span><i>Hours</i><em>'+hours(b)+'</em></span>')+'</span>'+
- '<span class="cta">Enquire'+I.arrow+'</span></span></button>'}
-
-/* ---------- C · SPLIT DETAIL (horizontal listing) ---------- */
-const cssC=`
-.tile.vc{display:grid;grid-template-columns:1.15fr 1fr;border-radius:18px;background:var(--card);border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.25)}
-.vc .media{padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.vc .ph{aspect-ratio:4/3;border-radius:10px}
-.vc .badge{border-radius:4px;padding:6px 10px;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
-.vc .badge.new{background:var(--red)}.vc .badge.used{background:#111;color:#fff}
-.vc .ths{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.vc .ths span{position:relative;aspect-ratio:4/3;border-radius:7px;overflow:hidden;background:#111}
-.vc .ths img{width:100%;height:100%;object-fit:cover}
-.vc .ths em{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.55);color:#fff;font-style:normal;font-weight:800;font-size:.9rem}
-.vc .info{padding:22px 24px 22px 12px;display:flex;flex-direction:column;min-width:0}
-.vc .ey{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.vc h3{margin:6px 0 0!important;font-size:clamp(1.4rem,2vw,1.8rem)!important;letter-spacing:-.035em;line-height:1.05}
-.vc .pr{display:block;margin-top:10px;font-size:clamp(1.6rem,2.4vw,2.1rem)!important;font-weight:800;letter-spacing:-.04em;color:var(--fg)}
-.vc .rows{margin:16px 0 0;border-top:1px solid var(--line)}
-.vc .rw{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.86rem}
-.vc .rw i{font-style:normal;color:var(--mute)}.vc .rw span{font-weight:700;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vc .ft{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.vc .ft span{display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border-radius:999px;background:var(--chip);font-size:.74rem;font-weight:600}
-.vc .ft svg{width:13px;height:13px;stroke:var(--red);fill:none;stroke-width:2.4}
-.vc .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:18px}
-.vc .acts span{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:4px;font-weight:800;font-size:.86rem}
-.vc .a1{border:1px solid var(--line)}.vc .a2{background:var(--red);color:#fff}
-@media(hover:hover) and (pointer:fine){.tile.vc:hover .a2{background:#e62204}.tile.vc:hover .a1{border-color:var(--fg)}}
-.rail .tile.vc{flex-basis:min(860px,88vw)}
-@media(max-width:720px){.tile.vc{grid-template-columns:1fr}.vc .info{padding:6px 18px 18px}.vc .ths{display:none}}
-`;
-function tileC(b,i){const t=thumbs(b),more=(b.images||[]).length-4;
- const f=(b.feats||[]).filter(x=>x.length<28).slice(0,3);
- return '<button class="tile vc" type="button" data-i="'+i+'" style="--max:'+b.max+'px" aria-label="'+b.name+', '+b.price+'. Open details">'+
- '<span class="media"><span class="ph"><img src="'+b.src+'" alt="" loading="lazy" draggable="false"><span class="badge '+(isNew(b)?'new':'used')+'">'+b.badge+'</span></span>'+
- (t.length===3?'<span class="ths">'+t.map((s,k)=>'<span><img src="'+s+'" onerror="this.onerror=null;this.src=this.src.replace(\'assets/images/gallery/\',\'gallery/\')" alt="" loading="lazy" draggable="false">'+(k===2&&more>0?'<em>+'+more+'</em>':'')+'</span>').join('')+'</span>':'')+'</span>'+
- '<span class="info"><span class="ey">'+b.year+' &middot; '+(isNew(b)?'New stock':'Pre-owned')+'</span><h3>'+b.name+'</h3><b class="pr">'+b.price+'</b>'+
- '<span class="rows"><span class="rw"><i>Engine</i><span>'+b.engine+'</span></span><span class="rw"><i>Hours</i><span>'+hours(b)+'</span></span>'+
- '<span class="rw"><i>Trailer</i><span>'+(b.trailer||'Ask the team')+'</span></span></span>'+
- (f.length?'<span class="ft">'+f.map(x=>'<span>'+I.check+x+'</span>').join('')+'</span>':'')+
- '<span class="acts"><span class="a1">View details</span><span class="a2">Enquire</span></span></span></button>'}
-
-window.BoatCards={a:{css:cssA,tile:tileA,name:'Listing'},b:{css:cssB,tile:tileB,name:'Showroom'},c:{css:cssC,tile:tileC,name:'Split detail'}};
-})();
-</script>
 <script id="stock-sheet-script">
 (function(){
 const CSS="\n:host{display:block;--bg:#202020;--panel:#1d1d1f;--card:#2a2a2c;--fg:#f5f5f3;--mute:#a8a8a3;--line:rgba(255,255,255,.12);--chip:rgba(255,255,255,.08);--red:#fa2805;--out:cubic-bezier(.23,1,.32,1);--drawer:cubic-bezier(.32,.72,0,1);font-family:Manrope,system-ui,-apple-system,\"Segoe UI\",sans-serif}\n*{box-sizing:border-box}\na{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit}\n:focus-visible{outline:2px solid var(--red);outline-offset:3px}\n.wrap{width:min(1280px,calc(100% - 48px));margin:0 auto}\n.top{padding:clamp(56px,8vw,110px) 0 28px}.top h1{margin:0;font-size:clamp(2.4rem,6vw,5rem);letter-spacing:-.05em;line-height:.95}.top p{margin:14px 0 0;color:var(--mute);max-width:520px;line-height:1.6}\n.grp{margin:44px 0 16px;font-size:1.05rem;font-weight:700;color:var(--mute)}\n.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:22px;padding-bottom:40px}\n.tile{display:block;text-align:left;width:100%;padding:0;border:0;color:inherit;background:var(--card);border-radius:26px;overflow:hidden;cursor:pointer;box-shadow:0 14px 40px rgba(0,0,0,.25);transition:transform .6s var(--drawer),box-shadow .6s var(--drawer)}\n.tile .ph{position:relative;aspect-ratio:4/3;background:#161616;display:grid;place-items:center;overflow:hidden}\n.tile .ph img{width:100%;max-width:var(--max);height:100%;object-fit:cover;transition:transform 1s var(--drawer)}\n.tile .in{padding:20px 22px 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:14px}\n.tile h3{margin:0;font-size:1.3rem;letter-spacing:-.03em}.tile p{margin:6px 0 0;color:var(--mute);font-size:.92rem}.tile b{font-size:1.2rem;letter-spacing:-.02em}\n.badge{display:inline-flex;padding:8px 13px;border-radius:999px;background:rgba(20,20,22,.55);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.16);color:#fff;font-weight:600;font-size:.76rem;line-height:1}\n.tile .badge{position:absolute;top:14px;left:14px}\n@media(hover:hover) and (pointer:fine){.tile:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.4)}.tile:hover .ph img{transform:scale(1.03)}}\n/* shared pieces for the sheets */\n.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:54px;padding:0 26px;border-radius:4px;border:1px solid transparent;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .3s,border-color .3s}\n.btn.red{background:var(--red);color:#fff}.btn.ghost{background:transparent;border-color:rgba(255,255,255,.28);color:#fff}.btn.block{width:100%}\n@media(hover:hover) and (pointer:fine){.btn.red:hover{background:#e62204}.btn.ghost:hover{border-color:#fff}}\n.x{width:42px;height:42px;border-radius:50%;border:0;background:var(--chip);color:#fff;font-size:1.2rem;cursor:pointer;transition:background .4s}.x:hover{background:var(--red)}\n.gal{position:relative}.frame{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:#111;display:grid;place-items:center}\n.frame img{width:100%;max-width:var(--max);height:100%;object-fit:cover}\n.gal .nav{position:absolute;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#111;font-size:1.1rem;cursor:pointer;z-index:2}.gal .nav.prev{left:14px}.gal .nav.next{right:14px}\n.morehead{display:none}.tnav{display:none}.track{display:contents}.thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.thumbs::-webkit-scrollbar{display:none}.th{flex:0 0 84px;height:64px;padding:0;border:2px solid transparent;border-radius:12px;overflow:hidden;background:#111;cursor:pointer;opacity:.6;transition:opacity .4s,border-color .4s}.th img{width:100%;height:100%;object-fit:cover}.th.on{opacity:1;border-color:var(--red)}\n.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;background:var(--card);border-radius:22px;overflow:hidden}\n.spec{padding:20px 14px;text-align:center;border-right:1px solid var(--line)}.spec:last-child{border-right:0}\n.spec svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin:0 auto 10px;display:block}\n.spec b{display:block;font-size:.86rem;margin-bottom:4px}.spec span{display:block;color:var(--mute);font-size:.86rem;line-height:1.35}\n.card{background:var(--card);border-radius:22px;padding:24px}\n.card h4{margin:0 0 16px;font-size:1.1rem;letter-spacing:-.02em}\n.ticks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}\n.ticks li{display:flex;gap:12px;line-height:1.45;font-size:.96rem}.ticks li:before{content:\"\";flex:none;width:6px;height:6px;margin-top:.55em;border-radius:50%;background:var(--red)}\n.price{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.04em;line-height:1}\n.small{color:var(--mute);font-size:.9rem;line-height:1.55}\n.rows{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}.rows li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}.rows li span:first-child{color:var(--mute)}.rows li span:last-child{font-weight:600;text-align:right}\n/* enquiry form: always from the right on desktop, up from the bottom on phones */\n.fm-bd{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .5s var(--drawer)}\n.fm-bd.open{opacity:1;pointer-events:auto}\n.fm{position:absolute;top:0;right:0;bottom:0;width:min(540px,100%);background:var(--panel);padding:64px 44px 44px;overflow:auto;transform:translateX(104%);transition:transform .7s var(--drawer);box-shadow:-40px 0 120px rgba(0,0,0,.4);border-radius:30px 0 0 30px}\n.fm-bd.open .fm{transform:none}\n.fm h3{margin:0 0 10px;font-size:clamp(1.8rem,3vw,2.4rem);letter-spacing:-.045em;line-height:1.05}.fm .lead{margin:0 0 26px;color:var(--mute);line-height:1.6}\n.fm .x{position:absolute;top:18px;right:18px}.fm .grab{display:none}\n.fm form{display:grid;gap:14px}.fm form[hidden],.fm .done[hidden]{display:none}.fm .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}\n.fm label{display:block;font-size:.8rem;font-weight:600;color:var(--mute)}.fm label i{color:var(--red);font-style:normal;margin-left:2px}\n.fm input,.fm textarea{width:100%;margin-top:7px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:var(--chip);color:#fff;font:inherit;font-size:1rem;transition:border-color .4s,box-shadow .4s}\n.fm textarea{min-height:110px;resize:vertical}.fm input:focus,.fm textarea:focus{outline:0;border-color:var(--red);box-shadow:0 0 0 4px rgba(250,40,5,.16)}\n@media(max-width:760px){.fm{top:auto;left:0;width:100%;max-height:94svh;padding:34px 22px calc(28px + env(safe-area-inset-bottom));border-radius:28px 28px 0 0;transform:translateY(104%)}.fm .grab{display:block;position:absolute;top:10px;left:50%;width:40px;height:5px;margin-left:-20px;border-radius:3px;background:var(--line)}.fm .row{grid-template-columns:1fr}.fm .x{top:14px;right:14px}.fm h3{padding-right:46px}}\n@media(prefers-reduced-motion:reduce){.fm,.fm-bd,.tile,.tile img{transition:none!important}}\n\n.sheet{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:22px;background:rgba(0,0,0,.58);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .5s var(--drawer)}\n.sheet.open{opacity:1;pointer-events:auto}\n.sheet-card{width:min(1280px,100%);max-height:94svh;overflow:auto;background:var(--panel);border-radius:32px;padding:28px 30px 32px;box-shadow:0 50px 140px rgba(0,0,0,.5);transform:translateY(30px) scale(.985);transition:transform .7s var(--drawer)}\n.sheet.open .sheet-card{transform:none}\n.o1-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}\n.o1 .ptitle h3{margin:0 0 8px;font-size:clamp(1.9rem,2.8vw,2.6rem);letter-spacing:-.05em;line-height:1.02}.o1 .ptitle .small{margin:0}\n.o1 .pline{padding-top:16px;border-top:1px solid var(--line);display:grid;gap:8px}\n.o1-head h3{margin:12px 0 6px;font-size:clamp(2rem,3.6vw,3.2rem);letter-spacing:-.05em;line-height:1}.o1-head .small{margin:0}\n.o1{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:start}\n.o1 .left{display:grid;gap:18px;align-content:start}.o1 .right{display:grid;gap:18px}\n.o1 .morehead{display:flex;justify-content:space-between;align-items:center;margin:22px 0 4px}.o1 .morep{margin:0;font-size:1.1rem;letter-spacing:-.02em}\n.o1 .tnav{display:flex;gap:8px}.o1 .tnav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--chip);color:#fff;font-size:1rem;cursor:pointer;transition:background .4s,border-color .4s}.o1 .tnav button:hover{background:var(--red);border-color:var(--red)}\n.o1 .thumbs{position:relative;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin-top:12px;padding-bottom:2px;overscroll-behavior-x:contain}\n.o1 .thumbs::-webkit-scrollbar{display:none}\n.o1 .th{flex:0 0 calc((100% - 24px) / 3.25);height:auto;aspect-ratio:4/3;border-radius:16px;opacity:.75;scroll-snap-align:start}.o1 .th:hover,.o1 .th.on{opacity:1}\n@media(hover:hover) and (pointer:fine){.o1 .thumbs{cursor:grab}.o1 .thumbs.drag{cursor:grabbing;user-select:none;scroll-snap-type:none}.o1 .thumbs.drag *{pointer-events:none}}\n.o1 .th img{-webkit-user-drag:none}\n.o1 .gal .frame{scroll-margin-top:12px}\n.o1 .sc{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}\n.o1 .si{display:flex;gap:12px;align-items:flex-start}.o1 .si.wide{grid-column:1/-1}\n.o1 .si svg{flex:none;width:24px;height:24px;stroke:var(--red);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}\n.o1 .si b{display:block;font-size:.84rem;margin-bottom:3px}.o1 .si span{display:block;color:var(--mute);font-size:.88rem;line-height:1.35}\n.o1 .facts .ticks{grid-template-columns:1fr}\n.o1 .extras h4{margin-bottom:8px}.o1 .extras .small{margin:0 0 16px}\n.o1 .xchips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}\n.o1 .xchip{padding:10px 15px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:#fff;font:600 .88rem Manrope,system-ui,sans-serif;cursor:pointer;transition:background .35s,border-color .35s}\n.o1 .xchip:hover{border-color:#fff}.o1 .xchip[aria-pressed=true]{background:var(--red);border-color:var(--red)}\n.o1 .xother{display:block;margin-bottom:16px;font-size:.8rem;font-weight:600;color:var(--mute)}\n.o1 .xother input{width:100%;margin-top:7px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--chip);color:#fff;font:inherit;font-size:.95rem;transition:border-color .4s,box-shadow .4s}\n.o1 .xother input:focus{outline:0;border-color:var(--red);box-shadow:0 0 0 4px rgba(250,40,5,.16)}.o1 .facts h4{margin-bottom:12px}\n.o1 .sr{list-style:none;margin:0 0 26px;padding:0;border-top:1px solid var(--line)}\n.o1 .sr li{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}\n.o1 .sr .k{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:.92rem;white-space:nowrap}\n.o1 .sr .k svg{flex:none;width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.o1 .sr .v{font-weight:600;font-size:.94rem;text-align:right;line-height:1.3}\n.o1 .pc{display:grid;gap:14px}.o1 .pc .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}\n.o1 .view{display:grid;gap:12px}\n/* whole photo always visible, with its own blurred copy behind it */\n.o1 .gal .frame{position:relative;background:#111}\n.o1 .gal .frame::before{content:\"\";position:absolute;inset:-30px;background:var(--bgi) center/cover no-repeat;filter:blur(30px) brightness(.5);transform:scale(1.1)}\n.o1 .gal .frame img{position:relative;z-index:1;width:100%;height:100%;max-width:none;object-fit:contain!important}\n/* the bottom photos are a strip you slide yourself (drag, swipe, arrows); the one under the cursor grows */\n.o1 .tnav{display:flex}\n.o1 .track{display:flex;gap:12px;width:max-content}\n.o1 .thumbs{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:none;padding:16px 0;margin:-4px 0 -4px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%)}\n.o1 .thumbs::-webkit-scrollbar{display:none}\n.o1 .thumbs .th{flex:0 0 auto;width:clamp(120px,10vw,190px)}\n.o1 .th{transition:transform .4s var(--drawer),opacity .4s,border-color .4s}\n@media(hover:hover) and (pointer:fine){.o1 .thumbs{cursor:grab}.o1 .thumbs.drag{cursor:grabbing;user-select:none}.o1 .thumbs.drag *{pointer-events:none}.o1 .th:hover{transform:scale(1.1);opacity:1;z-index:2}}\n@media(min-width:981px){\n .sheet{padding:clamp(14px,1.8vw,36px)}\n .sheet-card{width:min(1920px,100%);height:min(calc(100svh - 2*clamp(14px,1.8vw,36px)),1240px);max-height:none;display:flex;flex-direction:column;overflow:hidden;padding:clamp(20px,1.9vw,38px)}\n .o1-top{flex:none;margin-bottom:clamp(14px,1.1vw,22px)}\n .o1{flex:1;min-height:0;grid-template-columns:minmax(0,1.15fr) minmax(420px,1fr);gap:clamp(18px,1.7vw,32px);align-items:stretch}\n .o1 .left{min-height:0;display:flex;flex-direction:column;position:static}\n .o1 .gal{flex:1;min-height:0;display:flex;flex-direction:column}\n .o1 .gal .frame{flex:1;aspect-ratio:auto;min-height:240px;--max:2600px!important}\n  .o1 .th{flex:0 0 clamp(120px,10vw,190px)}\n .o1 .card{padding:clamp(16px,1.4vw,24px)}.o1 .pc{gap:10px}.o1 .btn{min-height:48px}\n .o1 .thumbs{margin-top:10px}.o1 .morehead{margin-top:14px}\n .o1 .right{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent;padding-right:6px}\n .o1 .ptitle h3{font-size:clamp(2rem,2.6vw,3.2rem)}.o1 .price{font-size:clamp(2.4rem,3.2vw,3.8rem)}\n .o1 .sr li{padding:clamp(11px,.9vw,15px) 0}\n}\n@media(min-width:1500px){.o1 .facts{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(26px,2.2vw,44px)}.o1 .facts .sr{margin-bottom:0}}\n@media(max-width:980px){.o1{grid-template-columns:minmax(0,1fr)}.o1 .left,.o1 .right,.o1 .gal{min-width:0}.o1 .left{position:static;grid-template-columns:minmax(0,1fr)}.o1 .thumbs{max-width:100%}}\n@media(max-width:620px){.sheet{padding:8px}.sheet-card{padding:18px 16px 24px;border-radius:24px}.ticks{grid-template-columns:1fr}.o1 .pc .row2{grid-template-columns:1fr}}\n@media(prefers-reduced-motion:reduce){.sheet,.sheet-card{transition:none!important}}\n\n.railhead{display:flex;justify-content:space-between;align-items:center;margin:44px 0 16px}.railhead h2{margin:0;font-size:1.05rem;font-weight:700;color:var(--mute)}\n.rnav{display:flex;gap:8px}.rnav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--chip);color:#fff;font-size:1.1rem;cursor:pointer;transition:background .4s,border-color .4s}.rnav button:hover{background:var(--red);border-color:var(--red)}\n.rail{display:flex;gap:30px;overflow-x:auto;overflow-y:visible;padding:22px calc(50vw - 50%) 56px;margin:-22px calc(50% - 50vw) -10px;scroll-snap-type:x proximity;scroll-padding:0 calc(50vw - 50%);scrollbar-width:none;overscroll-behavior-x:contain}\n.rail::-webkit-scrollbar{display:none}\n.rail .tile{flex:0 0 min(660px,86vw);scroll-snap-align:start;will-change:scale,opacity}\n.rail .tile .in{padding:26px 30px 28px}.rail .tile h3{font-size:clamp(1.5rem,2.2vw,2rem)}.rail .tile p{font-size:1rem}.rail .tile b{font-size:clamp(1.3rem,2vw,1.7rem)}\n@media(hover:hover) and (pointer:fine){.rail{scroll-snap-type:none;cursor:grab}.rail.drag{cursor:grabbing;user-select:none}.rail.drag *{pointer-events:none}}\n.rail img{-webkit-user-drag:none}\n.railhead{margin:0 0 6px;justify-content:flex-end}.rail{margin-bottom:0}\n:host([data-theme=\"light\"]){--bg:#eceae4;--panel:#ffffff;--card:#f3f3f5;--fg:#1d1d1f;--mute:#6e6e73;--line:rgba(0,0,0,.12);--chip:rgba(0,0,0,.06);color:#1d1d1f}\n:host([data-theme=\"light\"]) .tile{background:#fff;box-shadow:0 14px 40px rgba(30,30,30,.14)}\n:host([data-theme=\"light\"]) .tile .in b{color:#1d1d1f}\n:host([data-theme=\"light\"]) .x,:host([data-theme=\"light\"]) .rnav button,:host([data-theme=\"light\"]) .tnav button,:host([data-theme=\"light\"]) .xchip,:host([data-theme=\"light\"]) .xother input,:host([data-theme=\"light\"]) .fm input,:host([data-theme=\"light\"]) .fm textarea,:host([data-theme=\"light\"]) .btn.ghost{color:#1d1d1f}\n:host([data-theme=\"light\"]) .x:hover,:host([data-theme=\"light\"]) .rnav button:hover,:host([data-theme=\"light\"]) .tnav button:hover,:host([data-theme=\"light\"]) .xchip[aria-pressed=true]{color:#fff}\n:host([data-theme=\"light\"]) .btn.ghost{border-color:rgba(0,0,0,.3)}:host([data-theme=\"light\"]) .btn.ghost:hover{border-color:#1d1d1f}\n:host([data-theme=\"light\"]) .xchip:hover{border-color:#1d1d1f}\n\n/* touch screens: no grey tap box, no hover colour that sticks after a tap, quick taps */\n:host,*{-webkit-tap-highlight-color:transparent}\nbutton,a,input{touch-action:manipulation}\nbutton:focus:not(:focus-visible){outline:none}\nbutton:active{transform:scale(.94)}\n.tile:active{transform:scale(.985)}\n@media(hover:none){\n .rnav button:hover,.tnav button:hover,.x:hover{background:var(--chip);border-color:var(--line);color:inherit}\n .xchip:hover{border-color:var(--line)}.xchip[aria-pressed=true]:hover{border-color:var(--red)}\n .btn.red:hover{background:var(--red)}.btn.ghost:hover{border-color:rgba(255,255,255,.28)}\n :host([data-theme=\"light\"]) .rnav button:hover,:host([data-theme=\"light\"]) .tnav button:hover,:host([data-theme=\"light\"]) .x:hover{color:#1d1d1f}\n :host([data-theme=\"light\"]) .btn.ghost:hover{border-color:rgba(0,0,0,.3)}\n :host([data-theme=\"light\"]) .xchip:hover{border-color:var(--line)}\n}\n";
 const DATA=[{"id": "classic230", "name": "Classic 230", "badge": "New", "year": "2025", "engine": "300 hp Yamaha F300", "fuel": "Petrol", "price": "R815,000", "trailer": "", "hours": "", "feats": ["Hook mooring cover", "Fusion sound system", "Yamaha CL5 gauge", "Garmin Striker 4", "Drinks table", "Sun canopy"], "max": 800, "src": "assets/images/stock-classic-230.webp", "images": ["assets/images/gallery/classic230/01.jpg", "assets/images/gallery/classic230/02.jpg", "assets/images/gallery/classic230/03.jpg", "assets/images/gallery/classic230/04.jpg", "assets/images/gallery/classic230/05.jpg", "assets/images/gallery/classic230/06.jpg", "assets/images/gallery/classic230/07.jpg", "assets/images/gallery/classic230/08.jpg", "assets/images/gallery/classic230/09.jpg", "assets/images/gallery/classic230/10.jpg"]}, {"id": "infanta58", "name": "Infanta 5.8", "badge": "New", "year": "2026", "engine": "130 hp Yamaha F130", "fuel": "Petrol", "price": "R545,000", "trailer": "", "hours": "", "feats": ["Sun canopy", "Yamaha CL5 gauge", "Garmin Vivid 7", "Top mount binnacle", "Bay Star hydraulic steering", "Boat cover"], "max": 800, "src": "assets/images/stock-infanta-5-8.webp", "images": ["assets/images/gallery/infanta58/01.jpg", "assets/images/gallery/infanta58/02.jpg", "assets/images/gallery/infanta58/03.jpg", "assets/images/gallery/infanta58/04.jpg", "assets/images/gallery/infanta58/05.jpg", "assets/images/gallery/infanta58/06.jpg", "assets/images/gallery/infanta58/07.jpg", "assets/images/gallery/infanta58/08.jpg", "assets/images/gallery/infanta58/09.jpg", "assets/images/gallery/infanta58/10.jpg"]}, {"id": "odyssey580", "name": "Odyssey CX 580", "badge": "New", "year": "2026", "engine": "200 hp Yamaha F200", "fuel": "Petrol", "price": "R835,000", "trailer": "", "hours": "", "feats": ["Sun canopy", "Boat cover", "Rockford Fosgate sound system", "Yamaha CL5 gauge", "Built-in cooler box", "Drinks table"], "max": 1000, "src": "assets/images/odyssey-cx-580.webp", "images": ["assets/images/gallery/odyssey580/01.jpg", "assets/images/gallery/odyssey580/02.jpg", "assets/images/gallery/odyssey580/03.jpg", "assets/images/gallery/odyssey580/04.jpg", "assets/images/gallery/odyssey580/05.jpg", "assets/images/gallery/odyssey580/06.jpg", "assets/images/gallery/odyssey580/07.jpg"]}, {"id": "infanta52", "name": "Infanta 5.2", "badge": "New", "year": "2026", "engine": "100 hp Yamaha F100", "fuel": "Petrol", "price": "R455,000", "trailer": "", "hours": "", "feats": ["Hydraulic steering", "Isolator switch", "Water trap filter", "Boat cover", "Garmin Striker 4"], "max": 1000, "src": "assets/images/infanta-5-2.webp", "images": ["assets/images/gallery/infanta52/01.jpg", "assets/images/gallery/infanta52/02.jpg", "assets/images/gallery/infanta52/03.jpg", "assets/images/gallery/infanta52/04.jpg", "assets/images/gallery/infanta52/05.jpg"]}, {"id": "infanta47", "name": "Infanta 4.7", "badge": "New", "year": "2026", "engine": "70 hp Yamaha F70", "fuel": "Petrol", "price": "R355,000", "trailer": "Galvanised trailer", "hours": "", "feats": ["Switch panel", "Tacho gauge", "Hydraulic steering", "Ski bar", "Navigation lights", "All round lights"], "max": 1000, "src": "assets/images/infanta-4-7.webp", "images": ["assets/images/gallery/infanta47/01.jpg", "assets/images/gallery/infanta47/02.jpg", "assets/images/gallery/infanta47/03.jpg", "assets/images/gallery/infanta47/04.jpg", "assets/images/gallery/infanta47/05.jpg", "assets/images/gallery/infanta47/06.jpg", "assets/images/gallery/infanta47/07.jpg"]}, {"id": "regal225", "name": "Regal 225 Cuddy", "badge": "Pre-owned", "year": "2015", "engine": "300 hp MerCruiser 5.7L 350 Mag", "fuel": "Petrol", "price": "R595,000", "trailer": "", "hours": "", "feats": ["Regal FasTrac hull for efficient, smooth rides", "Spacious cuddy cabin with sleeping space and storage", "Integrated swim platform with ladder", "Comfortable cockpit seating with sun lounge", "Built-in sound system", "Hydraulic steering", "Bimini top and full boat cover included"], "max": 800, "src": "assets/images/preowned-regal-225.webp", "images": ["assets/images/gallery/regal225/01.jpg", "assets/images/gallery/regal225/02.jpg", "assets/images/gallery/regal225/03.jpg", "assets/images/gallery/regal225/04.jpg", "assets/images/gallery/regal225/05.jpg", "assets/images/gallery/regal225/06.jpg", "assets/images/gallery/regal225/07.jpg", "assets/images/gallery/regal225/08.jpg", "assets/images/gallery/regal225/09.jpg", "assets/images/gallery/regal225/10.jpg"]}, {"id": "panache2150", "name": "Panache 2150lx", "badge": "Pre-owned", "year": "2000", "engine": "200 hp Yamaha VMAX", "fuel": "Petrol", "price": "R245,000", "trailer": "Galvanised trailer", "hours": "59 hours", "feats": ["New battery", "New axles", "New brakes", "Tyres roadworthy", "Tacho and speedo gauge", "Drinks table", "Hydraulic steering"], "max": 800, "src": "assets/images/preowned-panache-2150.webp", "images": ["assets/images/gallery/panache2150/01.jpg", "assets/images/gallery/panache2150/02.jpg", "assets/images/gallery/panache2150/03.jpg", "assets/images/gallery/panache2150/04.jpg", "assets/images/gallery/panache2150/05.jpg"]}, {"id": "fusion15", "name": "Fusion 15", "badge": "Pre-owned", "year": "2017", "engine": "50 hp Honda F50", "fuel": "Petrol", "price": "R269,000", "trailer": "Galvanised trailer", "hours": "65 hours", "feats": ["Garmin", "Canopy", "Safety equipment"], "max": 480, "src": "assets/images/preowned-fusion-15.webp", "images": ["assets/images/gallery/fusion15/01.jpg", "assets/images/gallery/fusion15/02.jpg", "assets/images/gallery/fusion15/03.jpg", "assets/images/gallery/fusion15/04.jpg", "assets/images/gallery/fusion15/05.jpg"]}, {"id": "panache1950", "name": "Panache 1950", "badge": "Pre-owned", "year": "2008", "engine": "130 hp Yamaha F130 (2017)", "fuel": "Petrol", "price": "R345,000", "trailer": "Galvanised trailer", "hours": "49 hours", "feats": ["Sea Star hydraulic steering", "Built-in tank", "EVA decking", "Sun canopy", "Garmin Striker 4", "Motor cover", "Clip-on cover", "Storage cover"], "max": 800, "src": "assets/images/preowned-panache-1950.webp", "images": ["assets/images/gallery/panache1950/01.jpg", "assets/images/gallery/panache1950/02.jpg", "assets/images/gallery/panache1950/03.jpg", "assets/images/gallery/panache1950/04.jpg", "assets/images/gallery/panache1950/05.jpg", "assets/images/gallery/panache1950/06.jpg", "assets/images/gallery/panache1950/07.jpg"]}];
 const IMG=p=>(window.__A&&window.__A[p])||p;
 DATA.forEach(b=>{b.src=IMG(b.src);if(b.images)b.images=b.images.map(IMG)});
-function mount(id,html){const h=document.getElementById(id);if(!h)return null;const R=h.attachShadow({mode:'open'});R.innerHTML='<style>'+CSS+BoatCards.a.css+'</style>'+html;return R}
-function tilesHTML(g){return DATA.map((b,i)=>b.badge===g?BoatCards.a.tile(b,i):'').join('')}
+function mount(id,html){const h=document.getElementById(id);if(!h)return null;const R=h.attachShadow({mode:'open'});R.innerHTML='<style>'+CSS+'</style>'+html;return R}
+function tilesHTML(g){return DATA.map((b,i)=>b.badge===g?'<button class="tile" type="button" data-i="'+i+'" style="--max:'+b.max+'px" aria-label="'+b.name+', '+b.price+'. Open details"><span class="ph"><img src="'+b.src+'" alt="" loading="lazy" draggable="false"><span class="badge">'+b.badge+'</span></span><span class="in"><span><h3>'+b.name+'</h3><p>'+b.year+'  &middot;  '+b.engine+'</p></span><b>'+b.price+'</b></span></button>':'').join('')}
 function railHTML(g,id,title){return '<div class="railhead"><div class="rnav"><button type="button" data-rail="'+id+'" data-dir="-1" aria-label="Previous boats">&larr;</button><button type="button" data-rail="'+id+'" data-dir="1" aria-label="Next boats">&rarr;</button></div></div><div class="rail" id="'+id+'">'+tilesHTML(g)+'</div>'}
 const RN=mount('stockNew',railHTML('New','railNew','Available now'));
 const RU=mount('stockUsed',railHTML('Pre-owned','railUsed','Current pre-owned stock'));
-const RS=mount('stockSheetHost',"<div class=\"sheet\" id=\"sheet\" aria-hidden=\"true\"><div class=\"sheet-card\" role=\"dialog\" aria-modal=\"true\" data-body></div></div><div class=\"fm-bd\" id=\"fmBd\" aria-hidden=\"true\"><aside class=\"fm\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"fmTitle\"><span class=\"grab\" aria-hidden=\"true\"></span><button class=\"x\" id=\"fmX\" type=\"button\" aria-label=\"Close form\">&times;</button><div id=\"fmHead\"><h3 id=\"fmTitle\"></h3><p class=\"lead\">Leave your details and the team will get back to you.</p></div><form id=\"fmForm\"><input type=\"hidden\" name=\"product\"><div class=\"row\"><label>First name<i>*</i><input name=\"name\" autocomplete=\"given-name\" required></label><label>Last name<i>*</i><input name=\"surname\" autocomplete=\"family-name\" required></label></div><label>Email<i>*</i><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label><label>Contact number<i>*</i><input type=\"tel\" name=\"phone\" autocomplete=\"tel\" required></label><label>Message<textarea name=\"message\" placeholder=\"What would you like to know?\"></textarea></label><button class=\"btn red block\" type=\"submit\">Send enquiry</button></form><div class=\"done\" id=\"fmDone\" hidden><h3>Thank you</h3><p class=\"lead\">Your email app should have opened with the enquiry ready to send. If it did not, call Sean on 082 457 4026.</p><button class=\"btn ghost\" id=\"fmDoneX\" type=\"button\">Close</button></div></aside></div>");
+const RS=mount('stockSheetHost',"<div class=\"sheet\" id=\"sheet\" aria-hidden=\"true\"><div class=\"sheet-card\" role=\"dialog\" aria-modal=\"true\" data-body></div></div><div class=\"fm-bd\" id=\"fmBd\" aria-hidden=\"true\"><aside class=\"fm\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"fmTitle\"><span class=\"grab\" aria-hidden=\"true\"></span><button class=\"x\" id=\"fmX\" type=\"button\" aria-label=\"Close form\">&times;</button><div id=\"fmHead\"><h3 id=\"fmTitle\"></h3><p class=\"lead\">Leave your details and the team will get back to you.</p></div><form id=\"fmForm\"><input type=\"hidden\" name=\"product\"><div class=\"row\"><label>First name<i>*</i><input name=\"name\" autocomplete=\"given-name\" required></label><label>Last name<i>*</i><input name=\"surname\" autocomplete=\"family-name\" required></label></div><label>Email<i>*</i><input type=\"email\" name=\"email\" autocomplete=\"email\" required></label><label>Contact number<i>*</i><input type=\"tel\" name=\"phone\" autocomplete=\"tel\" required></label><label>Message<textarea name=\"message\" placeholder=\"What would you like to know?\"></textarea></label><button class=\"btn red block\" type=\"submit\">Send Enquiry</button></form><div class=\"done\" id=\"fmDone\" hidden><h3>Thank you</h3><p class=\"lead\">Your email app should have opened with the enquiry ready to send. If it did not, call Sean on 082 457 4026.</p><button class=\"btn ghost\" id=\"fmDoneX\" type=\"button\">Close</button></div></aside></div>");
 (function(){const hosts=['stockNew','stockUsed','stockSheetHost'].map(i=>document.getElementById(i)).filter(Boolean);
   const sync=()=>{const t=document.documentElement.dataset.theme==='light'?'light':'dark';hosts.forEach(h=>h.setAttribute('data-theme',t))};
   sync();new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})})();
@@ -1069,6 +1120,87 @@ function afterRender(root,b){const chips=[...root.querySelectorAll('.xchip')],go
 
 window.addEventListener('ky-open',e=>openSheet(e.detail));
 })(RS);
+})();
+</script>
+<script id="text-motion-v1-js">
+(function(){
+// every heading that gets the letter animation
+var SEL='.section-head h2,.brand-title h3,.cfg-head h2,.contact-form-panel h3,.models-head h4';
+function split(h){
+  if(h.dataset.tm)return;h.dataset.tm='1';
+  var label=h.textContent.replace(/\s+/g,' ').trim(),n=0;
+  h.setAttribute('aria-label',label);
+  (function walk(node){
+    [].slice.call(node.childNodes).forEach(function(ch){
+      if(ch.nodeType===3){
+        var frag=document.createDocumentFragment();
+        ch.textContent.split(/(\s+)/).forEach(function(part){
+          if(!part)return;
+          if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(' '));return}
+          var w=document.createElement('span');w.className='tm-w';w.setAttribute('aria-hidden','true');
+          [].forEach.call(part,function(c){var s=document.createElement('span');s.className='tm-c';s.textContent=c;s.style.transitionDelay=Math.min(n++*45,900)+'ms';w.appendChild(s)});
+          frag.appendChild(w)});
+        node.replaceChild(frag,ch);
+      }else if(ch.nodeType===1&&ch.tagName!=='BR'){walk(ch)}
+    });
+  })(h);
+  h.classList.add('tm-split');
+  io.observe(h);
+}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+  e.target.classList.add('tm-in');io.unobserve(e.target)}})},{threshold:.2,rootMargin:'0px 0px -8% 0px'});
+function run(){document.querySelectorAll(SEL).forEach(split)}
+run();document.addEventListener('DOMContentLoaded',run);window.addEventListener('load',run);
+// brand sections are built by script: catch headings added later
+new MutationObserver(function(){run()}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+<script id="engine-copy-v1-js">
+(function(){
+var copy=document.querySelector('.engine-copy'),sec=document.getElementById('yamahaDepth');
+if(!copy||!sec)return;
+var h=copy.querySelector('h2'),p=copy.querySelector('p');
+// heading: one span per line, letters as tm-c (animation B)
+if(h&&!h.dataset.tm){
+  h.dataset.tm='1';
+  var lines=h.innerHTML.split(/<br\s*\/?>/i).map(function(t){var d=document.createElement('div');d.innerHTML=t;return d.textContent.trim()});
+  h.setAttribute('aria-label',lines.join(' '));
+  var n=0,wi=0;
+  h.innerHTML=lines.map(function(line){
+    return '<span class="eh-line" aria-hidden="true">'+line.split(' ').map(function(w){
+      return '<span class="tm-w" data-i="'+(wi++)+'">'+[].map.call(w,function(c){return '<span class="tm-c" style="transition-delay:'+Math.min(n++*45,900)+'ms">'+c+'</span>'}).join('')+'</span>'}).join(' ')+'</span>'}).join('');
+  h.classList.add('tm-split');
+}
+// paragraph: words rise one after another, after the heading
+if(p&&!p.dataset.ew){
+  p.dataset.ew='1';
+  var words=p.textContent.trim().split(/\s+/);
+  p.setAttribute('aria-label',p.textContent.trim());
+  p.innerHTML=words.map(function(w,i){return '<span class="ew" aria-hidden="true" style="transition-delay:'+(650+i*35)+'ms">'+w+'</span>'}).join(' ');
+}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){h.classList.add('tm-in');copy.classList.add('ec-in');io.unobserve(e.target)}})},{threshold:.3});
+io.observe(copy);
+// scroll: heading lines drift apart as the engine explodes; spec labels draw in at their moment
+var specs=[['.engine-spec-1',.66],['.engine-spec-2',.72],['.engine-spec-3',.78]].map(function(a){return [sec.querySelector(a[0]),a[1]]});
+function ss(a,b,x){x=Math.max(0,Math.min(1,(x-a)/(b-a)));return x*x*(3-2*x)}
+var tick=false;
+function upd(){tick=false;
+  var r=sec.getBoundingClientRect(),max=Math.max(1,sec.offsetHeight-innerHeight),pr=Math.max(0,Math.min(1,-r.top/max));
+  copy.style.setProperty('--ex',ss(.22,.62,pr).toFixed(3));
+  specs.forEach(function(s){if(s[0])s[0].classList.toggle('on',pr>=s[1])});
+}
+addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+addEventListener('resize',upd,{passive:true});upd();
+})();
+</script>
+<script id="contact-form-v1-js">
+(function(){
+var panel=document.querySelector('.contact .contact-form-panel'),form=panel&&panel.querySelector('.form');
+if(!form)return;
+var steps=[].slice.call(form.children);
+steps.forEach(function(el,i){el.classList.add('cf-step');el.style.transitionDelay=(450+i*110)+'ms'});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){panel.classList.add('cf-on');io.unobserve(e.target)}})},{threshold:.2});
+io.observe(form);
 })();
 </script>
 </body>
